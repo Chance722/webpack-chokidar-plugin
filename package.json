@@ -1,0 +1,29 @@
+{
+  "name": "webpack-chokidar-plugin",
+  "version": "1.0.1",
+  "description": "A webpack plugin for Watching files / folders, powered by chokidar. ",
+  "main": "lib/index.js",
+  "author": "Chance722",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Chance722/webpack-chokidar-plugin.git"
+  },
+  "scripts": {
+    "build": "rimraf lib && rollup --config rollup.config.js"
+  },
+  "keywords": [
+    "webpack plugin",
+    "webpack file watch",
+    "chokidar webpack"
+  ],
+  "dependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/plugin-transform-runtime": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "rimraf": "^3.0.0",
+    "rollup": "^1.20.1",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-commonjs": "^10.0.2"
+  }
+}
