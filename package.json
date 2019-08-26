@@ -1,6 +1,6 @@
 {
   "name": "webpack-chokidar-plugin",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A webpack plugin for Watching files / folders, powered by chokidar. ",
   "main": "lib/index.js",
   "author": "Chance722",

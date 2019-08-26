@@ -31,11 +31,11 @@ wepackChokidarPlugin.prototype.apply = function(compiler) {
 
     watcher
     .on('add', path => {
-      options.onAddCallback ? (options.onAddCallback(path),watcher.close())
+      options.onAddCallback ? options.onAddCallback(path)
         : (() => null)()
     })
     .on('change', path => {
-      options.onChangeCallback ? (options.onChangeCallback(path),watcher.close())
+      options.onChangeCallback ? options.onChangeCallback(path)
         : (() => {
           console.log(`\n\n Compilation Started after change of - ${path} \n\n`)
           compiler.run(err => {
@@ -46,21 +46,21 @@ wepackChokidarPlugin.prototype.apply = function(compiler) {
         })()
     })
     .on('unlink', path => {
-      options.onUnlinkCallback ? (options.onUnlinkCallback(path),watcher.close())
+      options.onUnlinkCallback ? options.onUnlinkCallback(path)
         : (() => console.log(`File ${path} has been removed`))()
     })
 
     watcher
       .on('addDir', path => {
-        options.onAddDirCallback ? (options.onAddDirCallback(path),watcher.close())
+        options.onAddDirCallback ? options.onAddDirCallback(path)
           : (() => console.log(`Directory ${path} has been added`))()
       })
       .on('unlinkDir', path => {
-        options.unlinkDirCallback ? (options.unlinkDirCallback(path),watcher.close())
+        options.unlinkDirCallback ? options.unlinkDirCallback(path)
           : (() => console.log(`Directory ${path} has been removed`))()
       })
       .on('error', () => {
-        options.onErrorCallback ? (options.onErrorCallback(),watcher.close())
+        options.onErrorCallback ? options.onErrorCallback()
           : (error => console.log(`Watcher error: ${error}`))()
       })
       .on('ready', () => {
@@ -68,7 +68,7 @@ wepackChokidarPlugin.prototype.apply = function(compiler) {
           : (() => console.log(`Initial scan complete. Ready for changes`))()
       })
       .on('raw', (event, path, details) => {
-        options.onRawCallback ? (options.onRawCallback(event, path, details),watcher.close())
+        options.onRawCallback ? options.onRawCallback(event, path, details)
           : (() => null)()
       })
   })
