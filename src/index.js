@@ -7,8 +7,11 @@ function wepackChokidarPlugin (options) {
 wepackChokidarPlugin.prototype.apply = function(compiler) {
   const options = this.options
 
+  let watcher = null
+
   compiler.plugin('done', compilation => {
-    const watcher = chokidar.watch(options.watchFilePaths, {
+    if (watcher) return
+    watcher = chokidar.watch(options.watchFilePaths, {
       persistent: options.persistance || true,
       ignored: options.ignored || false,
       ignoreInitial: options.ignoreInitial || false,
